@@ -1,23 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook.cpp                                      :+:      :+:    :+:   */
+/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mazeghou <mazeghou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/15 22:01:38 by mazeghou          #+#    #+#             */
-/*   Updated: 2025/02/15 22:01:50 by mazeghou         ###   ########.fr       */
+/*   Created: 2025/02/15 22:01:40 by mazeghou          #+#    #+#             */
+/*   Updated: 2025/02/15 22:07:28 by mazeghou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "PhoneBook.hpp"
-
+#include <iostream>
 using namespace std;
 
-PhoneBook::PhoneBook( void ) {
-    cout << "Constructor called" << endl;
-}
-
-PhoneBook::~PhoneBook( void ) {
-    cout << "Destructor called" << endl;
-}
+class PhoneBook {
+    public:
+        PhoneBook( void );
+		~PhoneBook( void );
+};

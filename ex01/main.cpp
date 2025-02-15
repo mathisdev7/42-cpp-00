@@ -1,23 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook.cpp                                      :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mazeghou <mazeghou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/15 22:01:38 by mazeghou          #+#    #+#             */
-/*   Updated: 2025/02/15 22:01:50 by mazeghou         ###   ########.fr       */
+/*   Created: 2025/02/15 22:01:32 by mazeghou          #+#    #+#             */
+/*   Updated: 2025/02/15 22:09:53 by mazeghou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "PhoneBook.hpp"
+# include "Contact.hpp"
 
-using namespace std;
-
-PhoneBook::PhoneBook( void ) {
-    cout << "Constructor called" << endl;
-}
-
-PhoneBook::~PhoneBook( void ) {
-    cout << "Destructor called" << endl;
+int main() {
+    PhoneBook phonebook;
+	Contact contact( "John", "Doe", "johndoe", "42", "0612345678" );
+	contact.Print();
+    return (0);
 }

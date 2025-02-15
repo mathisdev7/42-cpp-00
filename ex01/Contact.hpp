@@ -1,23 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook.cpp                                      :+:      :+:    :+:   */
+/*   Contact.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mazeghou <mazeghou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/15 22:01:38 by mazeghou          #+#    #+#             */
-/*   Updated: 2025/02/15 22:01:50 by mazeghou         ###   ########.fr       */
+/*   Created: 2025/02/15 22:05:03 by mazeghou          #+#    #+#             */
+/*   Updated: 2025/02/15 22:11:14 by mazeghou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "PhoneBook.hpp"
-
+# include <iostream>
+# include <string>
 using namespace std;
 
-PhoneBook::PhoneBook( void ) {
-    cout << "Constructor called" << endl;
-}
-
-PhoneBook::~PhoneBook( void ) {
-    cout << "Destructor called" << endl;
-}
+class Contact {
+    public:
+        Contact( string firstName, string lastName, string nickname, string darkestSecret, string phone );
+        ~Contact( void );
+		void Print( void );
+    private:
+        string firstName;
+		string lastName;
+		string nickname;
+		string darkestSecret;
+        string phone;
+};
