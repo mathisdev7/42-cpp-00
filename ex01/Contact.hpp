@@ -6,19 +6,31 @@
 /*   By: mazeghou <mazeghou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 22:05:03 by mazeghou          #+#    #+#             */
-/*   Updated: 2025/02/15 22:11:14 by mazeghou         ###   ########.fr       */
+/*   Updated: 2025/02/17 15:32:16 by mazeghou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef CONTACT_HPP
+# define CONTACT_HPP
 # include <iostream>
 # include <string>
 using namespace std;
 
 class Contact {
     public:
-        Contact( string firstName, string lastName, string nickname, string darkestSecret, string phone );
-        ~Contact( void );
-		void Print( void );
+	    Contact(void);
+        ~Contact(void);
+		string getFirstName(void);
+		string getLastName(void);
+		string getNickname(void);
+		string getDarkestSecret(void);
+		string getPhone(void);
+		void setFirstName(string firstName);
+		void setLastName(string lastName);
+		void setNickname(string nickname);
+		void setDarkestSecret(string darketSecret);
+		void setPhone(string phone);
+
     private:
         string firstName;
 		string lastName;
@@ -26,3 +38,5 @@ class Contact {
 		string darkestSecret;
         string phone;
 };
+
+#endif

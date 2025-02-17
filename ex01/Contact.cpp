@@ -6,29 +6,64 @@
 /*   By: mazeghou <mazeghou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 22:06:35 by mazeghou          #+#    #+#             */
-/*   Updated: 2025/02/15 22:11:25 by mazeghou         ###   ########.fr       */
+/*   Updated: 2025/02/17 15:32:49 by mazeghou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "Contact.hpp"
 
-Contact::Contact( string firstName, string lastName, string nickname, string darkestSecret, string phone ) {
-	cout << "Constructor called" << endl;
-    this->firstName = firstName;
-    this->lastName = lastName;
-    this->nickname = nickname;
-    this->darkestSecret = darkestSecret;
-    this->phone = phone;
+Contact::Contact() {}
+
+Contact::~Contact(void)
+{
 }
 
-Contact::~Contact( void ) {
-    cout << "Destructor called" << endl;
+void Contact::setFirstName(string firstName)
+{
+	this->firstName = firstName;
 }
 
-void Contact::Print( void ) {
-    cout << "First name: " << this->firstName << endl;
-    cout << "Last name: " << this->lastName << endl;
-    cout << "Nickname: " << this->nickname << endl;
-    cout << "Darkest secret: " << this->darkestSecret << endl;
-    cout << "Phone: " << this->phone << endl;
+void Contact::setLastName(string lastName)
+{
+	this->lastName = lastName;
+}
+
+void Contact::setNickname(string nickname)
+{
+	this->nickname = nickname;
+}
+
+void Contact::setDarkestSecret(string darkestSecret)
+{
+	this->darkestSecret = darkestSecret;
+}
+
+void Contact::setPhone(string phone)
+{
+	this->phone = phone;
+}
+
+string Contact::getFirstName(void)
+{
+	return (this->firstName);
+}
+
+string Contact::getLastName(void)
+{
+	return (this->lastName);
+}
+
+string Contact::getNickname(void)
+{
+	return (this->nickname);
+}
+
+string Contact::getDarkestSecret(void)
+{
+	return (this->darkestSecret);
+}
+
+string Contact::getPhone(void)
+{
+	return (this->phone);
 }
