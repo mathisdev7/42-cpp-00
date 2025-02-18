@@ -6,83 +6,143 @@
 /*   By: mazeghou <mazeghou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 22:01:38 by mazeghou          #+#    #+#             */
-/*   Updated: 2025/02/17 16:03:27 by mazeghou         ###   ########.fr       */
+/*   Updated: 2025/02/18 05:51:27 by mazeghou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "PhoneBook.hpp"
+#include "PhoneBook.hpp"
+#include <iomanip>
+#include <sstream>
 
 using namespace std;
 
 void PhoneBook::AddContact(void)
 {
 	string prompt;
+	int temp_index;
 
 	prompt = "";
-	if (this->index > 7)
+	if (this->index == 8)
+	{
+		temp_index = 0;
 		cout << "Since there is more than 7 contacts, we will now overwrite the first." << endl;
+	}
+	else
+		temp_index = this->index;
 	while (!cin.eof() && prompt == "")
 	{
 		cout << "Enter his/her first name: ";
 		if (getline(cin, prompt) && prompt != "")
-			this->contacts[this->index % 8].setFirstName(prompt);
+			this->contacts[temp_index].setFirstName(prompt);
 	}
 	prompt = "";
 	while (!cin.eof() && prompt == "")
 	{
 		cout << "Enter his/her last name: ";
 		if (getline(cin, prompt) && prompt != "")
-			this->contacts[this->index % 8].setLastName(prompt);
+			this->contacts[temp_index].setLastName(prompt);
 	}
 	prompt = "";
 	while (!cin.eof() && prompt == "")
 	{
 		cout << "Enter his/her nickname: ";
 		if (getline(cin, prompt) && prompt != "")
-			this->contacts[this->index % 8].setNickname(prompt);
+			this->contacts[temp_index].setNickname(prompt);
 	}
 	prompt = "";
 	while (!cin.eof() && prompt == "")
 	{
 		cout << "Enter his/her darkest secret: ";
 		if (getline(cin, prompt) && prompt != "")
-			this->contacts[this->index % 8].setDarkestSecret(prompt);
+			this->contacts[temp_index].setDarkestSecret(prompt);
 	}
 	prompt = "";
 	while (!cin.eof() && prompt == "")
 	{
 		cout << "Enter his/her phone number: ";
 		if (getline(cin, prompt) && prompt != "")
-			this->contacts[this->index % 8].setPhone(prompt);
+			this->contacts[temp_index].setPhone(prompt);
 	}
-	this->PrintAllContact();
-	this->index++;
-}
-
-void PhoneBook::PrintAllContact()
-{
-	for (int i = 0; i < 8; i++) {
-		if (contacts[i].getFirstName().empty())
-			continue;
-		this->PrintContact(contacts[i]);
-		cout << "--------" << endl;
-	}
+	if (this->index < 8)
+		this->index++;
 }
 
 void PhoneBook::PrintContact(Contact contact)
 {
 	cout << "First name: " << contact.getFirstName() << endl;
-    cout << "Last name: " << contact.getLastName() << endl;
-    cout << "Nickname: " << contact.getNickname() << endl;
-    cout << "Darkest secret: " << contact.getDarkestSecret() << endl;
-    cout << "Phone: " << contact.getPhone() << endl;
+	cout << "Last name: " << contact.getLastName() << endl;
+	cout << "Nickname: " << contact.getNickname() << endl;
+	cout << "Darkest secret: " << contact.getDarkestSecret() << endl;
+	cout << "Phone: " << contact.getPhone() << endl;
 }
 
-PhoneBook::PhoneBook(void) {
+PhoneBook::PhoneBook(void)
+{
 	this->index = 0;
-    cout << "Constructor called" << endl;
+	cout << "Welcome to phonebook, register your friends as contacts" << endl;
 }
 
-PhoneBook::~PhoneBook( void ) {
-    cout << "Destructor called" << endl;
+PhoneBook::~PhoneBook(void)
+{
+	cout << "Well, goodbye." << endl;
+}
+
+void PhoneBook::SearchContact()
+{
+	cout << "|     Index|First Name| Last Name|  Nickname|" << endl;
+	for (int i = 0; i < 8; i++)
+	{
+		if (contacts[i].getFirstName().empty())
+			continue;
+		string firstName = contacts[i].getFirstName();
+		string lastName = contacts[i].getLastName();
+		string nickname = contacts[i].getNickname();
+
+		if (firstName.length() > 10)
+		{
+			firstName = firstName.substr(0, 9) + ".";
+		}
+		if (lastName.length() > 10)
+		{
+			lastName = lastName.substr(0, 9) + ".";
+		}
+		if (nickname.length() > 10)
+		{
+			nickname = nickname.substr(0, 9) + ".";
+		}
+
+		cout << "|" << setw(10) << right << i
+			 << "|" << setw(10) << left << firstName
+			 << "|" << setw(10) << left << lastName
+			 << "|" << setw(10) << left << nickname << "|" << endl;
+	}
+	string input;
+	cout << "Enter contact index (0-7): ";
+	getline(cin, input);
+	try
+	{
+		istringstream iss(input);
+		int temp;
+		if (!(iss >> temp))
+		{
+			cout << "Invalid index format." << endl;
+			return;
+		}
+		index = temp;
+		if (index < 0 || index >= 8)
+		{
+			cout << "Invalid index range, must be between 0 and 8." << endl;
+			return;
+		}
+		if (contacts[index].getFirstName().empty())
+		{
+			cout << "Empty contact." << endl;
+			return;
+		}
+		PrintContact(contacts[index]);
+	}
+	catch (...)
+	{
+		cout << "Invalid index format." << endl;
+	}
 }
