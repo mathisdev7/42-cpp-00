@@ -6,7 +6,7 @@
 /*   By: mazeghou <mazeghou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 22:01:38 by mazeghou          #+#    #+#             */
-/*   Updated: 2025/02/18 05:51:27 by mazeghou         ###   ########.fr       */
+/*   Updated: 2025/02/18 12:36:01 by mazeghou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,9 @@ void PhoneBook::AddContact(void)
 	int temp_index;
 
 	prompt = "";
+	temp_index = 0;
 	if (this->index == 8)
-	{
-		temp_index = 0;
 		cout << "Since there is more than 7 contacts, we will now overwrite the first." << endl;
-	}
 	else
 		temp_index = this->index;
 	while (!cin.eof() && prompt == "")
@@ -90,7 +88,7 @@ PhoneBook::~PhoneBook(void)
 void PhoneBook::SearchContact()
 {
 	cout << "|     Index|First Name| Last Name|  Nickname|" << endl;
-	for (int i = 0; i < 8; i++)
+	for (int i = 0; i < this->index; i++)
 	{
 		if (contacts[i].getFirstName().empty())
 			continue;
@@ -128,18 +126,17 @@ void PhoneBook::SearchContact()
 			cout << "Invalid index format." << endl;
 			return;
 		}
-		index = temp;
-		if (index < 0 || index >= 8)
+		if (temp < 0 || temp >= 8)
 		{
 			cout << "Invalid index range, must be between 0 and 8." << endl;
 			return;
 		}
-		if (contacts[index].getFirstName().empty())
+		if (contacts[temp].getFirstName().empty())
 		{
 			cout << "Empty contact." << endl;
 			return;
 		}
-		PrintContact(contacts[index]);
+		PrintContact(contacts[temp]);
 	}
 	catch (...)
 	{
