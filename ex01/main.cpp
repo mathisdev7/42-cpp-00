@@ -6,7 +6,7 @@
 /*   By: mazeghou <mazeghou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 22:01:32 by mazeghou          #+#    #+#             */
-/*   Updated: 2025/02/18 05:53:53 by mazeghou         ###   ########.fr       */
+/*   Updated: 2025/02/18 19:32:05 by mazeghou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@ int main()
 {
 	PhoneBook phonebook;
 	Contact contact;
-	string prompt;
+	std::string prompt;
 
 	while (prompt != "EXIT")
 	{
-		cout << "Current commands: ADD (Add a contact), SEARCH (Find a contact), EXIT (Exit program)" << endl;
-		cout << "Enter a command name: ";
-		getline(cin, prompt);
+		std::cout << "Current commands: ADD (Add a contact), SEARCH (Find a contact), EXIT (Exit program)" << std::endl;
+		std::cout << "Enter a command name: ";
+		std::getline(std::cin, prompt);
 		if (prompt == "ADD")
 			phonebook.AddContact();
 		else if (prompt == "SEARCH")

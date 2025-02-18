@@ -6,7 +6,7 @@
 /*   By: mazeghou <mazeghou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/15 22:01:40 by mazeghou          #+#    #+#             */
-/*   Updated: 2025/02/18 05:51:31 by mazeghou         ###   ########.fr       */
+/*   Updated: 2025/02/18 19:28:36 by mazeghou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #define PHONEBOOK_HPP
 #include <iostream>
 #include "Contact.hpp"
-using namespace std;
 
 class PhoneBook
 {
